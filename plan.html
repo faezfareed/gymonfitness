@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>plan</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="heading-icon.png">
+  <link rel="stylesheet" type="text/css" href="owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">   
+  <style>
+    .cart {
+      padding: 20px;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+    }
+    h2,h3,p
+    {
+color: white;
+    }
+  </style>
+</head>
+<body style="background-color: black;">
+  <header class="header-style-one" >
+    <div class="container">
+      <div class="row">
+        <div class="desktop-nav" id="stickyHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="d-flex-all justify-content-between">
+                  <div class="header-logo">
+                    <a href="index.html">
+                      <figure>
+                        <img src="logo-2.svg" alt="logoo">
+                      </figure>
+                    </a>
+                  </div>
+                  <div class="nav-bar">
+                    <ul>
+                      <li>
+                        <a href="index.html">Home</a>
+                      </li>
+                      <li>
+                        <a href="about.html">About</a>
+                      </li>
+                      <li><a href="plan.html">plan</a>
+                      </li>
+                      <li>
+                        <a href="contact.html">Contact</a>
+                      </li>
+                      <li>
+                        <a href="login.html">LogIn</a>
+                      </li>
+                      <li>
+                        <a href="register.html">Register</a>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="banner-style-one">
+    <div class="parallax" style="background-image: url(pattren-3.png);"></div>
+    <div class="container">
+      <div class="row">
+        <div class="banner-details">
+          <h2 style="color: white;">PLANS</h2>
+        </div>
+      </div>
+    </div>  
+  </section>
+  <section class="gap pricing-plans">
+    <div class="heading">
+      <span style="color: white;">Select a plan that suits</span>
+      <h2 style="color: white;">Flexible Pricing Plans</h2>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="main-price">
+            <div class="price-box">
+              <h3>Student Membership</h3>
+              <div class="price">
+                <h2>Rs2000</h2>
+                <p>Per user / Month</p>
+              </div>
+              <div class="features">
+                <ul>
+                  <li><i class="fa-solid fa-circle-check"></i> All Plan.it features</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Intelligent bid manager</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Contractor network</li>
+                </ul>
+              </div>
+              <button onclick="addToCart('Student Membership', 20)" class="theme-btn">Select Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="main-price">
+            <div class="price-box">
+              <h3>Corporate Membership</h3>
+              <div class="price">
+                <h2>$50</h2>
+                <p>Per user / Month</p>
+              </div>
+              <div class="features">
+                <ul>
+                  <li><i class="fa-solid fa-circle-check"></i> All Plan.it features</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Intelligent bid manager</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Contractor network</li>
+                </ul>
+              </div>
+              <button onclick="addToCart('Corporate Membership', 50)" class="theme-btn">Select Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="main-price">
+            <div class="price-box">
+              <h3>Flex Membership</h3>
+              <div class="price">
+                <h2>$90</h2>
+                <p>Per user / Month</p>
+              </div>
+              <div class="features">
+                <ul>
+                  <li><i class="fa-solid fa-circle-check"></i> All Plan.it features</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Intelligent bid manager</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Contractor network</li>
+                </ul>
+              </div>
+              <button onclick="addToCart('Flex Membership', 90)" class="theme-btn">Select Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p class="total">Total: $<span id="total">0.00</span></p>
+    <button class="checkout-btn" onclick="openCheckout()">Checkout</button>
+  </div>
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <h2>Enter Payment Details</h2>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="card" placeholder="Credit Card Number" required>
+      <input type="text" id="address" placeholder="Shipping Address" required>
+      <button onclick="purchase()">Purchase</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+  <footer class="footer-style-one" style="background-image: url(footer-img.jpg);">
+    <div class="footer-p-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="footer-col">
+              <h3>Information</h3>
+              <p>Regular trips to the gym are great, but don't worry if you can't find a large chunk of time to exercise every day.</p>
+              <ul class="social-media">
+                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="flaticon-twitter"></i></a></li>
+                <li><a href="#"><i class="flaticon-instagram"></i></a></li>
+                <li><a href="#"><i class="flaticon-pinterest"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="footer-col">
+              <h3>Contact</h3>
+              <ul>
+                <li>
+                   <i class="flaticon-maps"></i>
+                  <p>tariq road</p>
+                </li>
+                <li>
+                   <i class="flaticon-iphone"></i>
+                  <p><a href="callto:03222039432">03222039432</a></p>
+                </li>
+                <li>
+                   <i class="flaticon-mail"></i>
+                  <p><a href="mailto:gymonfitness@domain.com">gym-on-fitness </a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="footer-col">
+              <h3>Newsletter</h3>
+              <p>Signup for our weekly newsletter to get the latest news.</p>
+              <form>
+                <input type="email" name="email" placeholder="Enter your email.">
+                <button>
+                  <i class="fa-solid fa-arrow-up-long"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(productName, productPrice) {
+      cart.push({ name: productName, price: productPrice });
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            <h4>${item.name}</h4>
+            <p>$${item.price.toFixed(2)}</p>
+            <button onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        `;
+      });
+      document.getElementById('total').textContent = total.toFixed(2);
+    }
+
+    function openCheckout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      document.getElementById("paymentModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+
+    function purchase() {
+      const name = document.getElementById("name").value;
+      const card = document.getElementById("card").value;
+      const address = document.getElementById("address").value;
+
+      if (!name || !card || !address) {
+        alert("Please fill in all the details.");
+        return;
+      }
+
+      closeModal();
+      alert("Purchase successful! Thank you for your order, " + name + ".");
+      cart = [];
+      renderCart();
+    }
+  </script>
+   <script src="assets/js/jquery.min.js"></script>
+   <script src="assets/js/jquery.waypoints.min.js"></script>
+   <script src="assets/js/jquery.counterup.min.js"></script>
+   <script src="assets/js/bootstrap.min.js"></script> 
+   <script src="assets/js/jquery.fancybox.min.js"></script>
+   <script src="assets/js/jquery.nice-select.js"></script> 
+   <script src="assets/js/owl.carousel.min.js"></script>
+   <script src="assets/js/custom.js"></script>
+</body>
+</html>
