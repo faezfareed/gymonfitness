@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="heading-icon.png">
+  <link rel="stylesheet" type="text/css" href="owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+<body style="background-color: black;">
+    <section class="banner-style-one">
+        <div class="parallax" style="background-image: url(pattren-3.png);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="banner-details">
+                    <h2>Login</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="background-color: black;" class="box login">
+        <h3 style="color: white;">LogIn Your Account</h3>
+        <form onsubmit="loginUser(event)">
+            <input type="email" id="loginEmail" placeholder="Username or email address" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <div class="remember">
+                <div class="first">
+                    <input type="checkbox" name="checkbox" id="checkbox">
+                    <label for="checkbox" style="color: white;">Remember me</label>
+                </div>
+                <div class="second">
+                    <a href="javascript:void(0)">Forget a Password?</a>
+                </div>
+            </div>
+            <button type="submit" class="theme-btn"> Login</button>
+            <button type="button" class="theme-btn" ><a href="register.html" style="color: white;">Register</a></button>
+        </form>
+    </div>
+
+    <script>
+        function loginUser(event) {
+            event.preventDefault();
+            const loginEmail = document.getElementById('loginEmail').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            const registeredEmail = localStorage.getItem('registeredEmail');
+            const registeredPassword = localStorage.getItem('registeredPassword');
+
+            if (loginEmail === registeredEmail && loginPassword === registeredPassword) {
+                alert('Login successful! Redirecting to home page.');
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
